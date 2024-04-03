@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document</title>
+</head>
+<style>
+
+    .container{
+        background-color: burlywood;
+        width: 350px;
+        border-radius: 5px;
+        border: solid 3px brown;
+        display: block;
+        margin: 0 auto;
+        padding: 15px;
+        display: flex;
+         justify-content: space-around;
+         flex-wrap: wrap;
+    }
+    .btn{
+        padding: 5px;
+        border-radius: 5px;
+        margin: 0px auto;
+        margin-top: 30px;
+        color: brown;
+        background-color: burlywood;
+        border-color: brown;
+    }
+    .btn:hover{
+        background-color:  brown;
+        color: burlywood;
+    }
+</style>
+<body>
+    <div class="container">
+        <label for="fd" style="margin-top: 10px;">Date 1:</label>
+        <input type="date" id="fd" style="margin-top: 10px; background-color: bisque;">
+        <label for="sd" style="margin-top: 10px;">Date 2:</label>
+        <input type="date" id="sd" style="margin-top: 10px;  background-color: bisque;">
+        <button onclick="calculate()" class="btn">Calculate</button><button onclick="reset()" class="btn">Reset</button>
+    
+    </div>
+    <div><h2 id="dc" style="text-align: center;"></h2></div>
+    
+    <script>
+        function calculate() {
+            const fd = document.getElementById('fd').value;
+            const sd = document.getElementById('sd').value;
+
+            const date1 = new Date(fd);
+            const date2 = new Date(sd);
+
+            const difference = Math.abs(date2 - date1);
+
+            const days = Math.round(difference / (1000 * 60 * 60 * 24));
+
+            const dayElement = document.getElementById('dc');
+            dayElement.innerText = ` ${days}  ${days > 1 ? 'days' : 'day'}.`;
+
+        }
+        function reset() {
+            document.getElementById('fd').value = "";
+            document.getElementById('sd').value = "";
+            document.getElementById('dayCount').innerText = "";
+        }
+    </script>
+</body>
+</html>
